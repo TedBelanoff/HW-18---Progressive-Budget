@@ -17,10 +17,7 @@ app.use(express.static("public"));
 //Adding the line below appeared to be necessary to include the icons / include icons referenced by manifest
 app.use(express.static("public/icons"));
 
-mongoose.connect("mongodb://localhost/budget", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", { useNewUrlParser: true });
 
 // Include Routes
 app.use(require("./routes/api.js"));
